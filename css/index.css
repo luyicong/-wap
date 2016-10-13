@@ -1,0 +1,240 @@
+html,
+body,
+div,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+html,
+body {
+  font: 12px/1.5 Tahoma, '\5FAE\8F6F\96C5\9ED1', 'Microsoft Yahei', "hiragino sans gb", Helvetica, Arial, "\5b8b\4f53", 'sans-serif';
+}
+input,
+button {
+  border: none;
+  outline: none;
+  font: 12px/1.5 Tahoma, '\5FAE\8F6F\96C5\9ED1', 'Microsoft Yahei', "hiragino sans gb", Helvetica, Arial, "\5b8b\4f53", 'sans-serif';
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #333333;
+}
+.setBorderBox {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.top_wrap {
+  width: 100%;
+  height: 2rem;
+  background: rgba(0, 0, 0, 0.93);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+.logo {
+  display: block;
+  float: left;
+  width: 3rem;
+  height: 1rem;
+  margin: 0.5rem 0.6rem 0.5rem 0.25rem;
+  background: url(../img/logo.png) 0 0 no-repeat;
+  background-size: 3rem 1rem;
+}
+#channcel_btn {
+  width: 1.2rem;
+  height: 1.7rem;
+  float: left;
+  margin-top: 0.2rem;
+}
+#channcel_btn.channcel_btn_show {
+  background: url(../img/channel_ice.png) no-repeat;
+  background-size: 1.2rem 3.4rem;
+  background-position: 0 0;
+}
+#channcel_btn.channcel_btn_close {
+  background: url(../img/channel_ice.png) no-repeat;
+  background-size: 1.2rem 3.4rem;
+  background-position: 0 -1.7rem;
+}
+.channcel_list {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 2rem;
+  background: rgba(0, 0, 0, 0.93);
+  overflow: hidden;
+  z-index: 3;
+  border-top: 2px solid #666666;
+}
+.channcel_list.list_hide {
+  display: none;
+}
+.channcel_list.list_show {
+  display: block;
+}
+.channcel_list ul {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  padding: 0.25rem 0;
+}
+.channcel_list ul li {
+  width: 21.5%;
+  float: left;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  margin-right: 0.1rem;
+}
+.channcel_list ul li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #FFFFFF;
+  font-size: 0.8rem;
+}
+.right_btn_list {
+  width: auto;
+  height: 100%;
+  float: right;
+}
+.right_btn_list a {
+  display: block;
+  padding: 0 0.25rem;
+  height: 1.2rem;
+  float: left;
+  margin: 0.3rem 0.25rem 0.45rem 0;
+  font-size: 0.6rem;
+  line-height: 1.2rem;
+  color: #ffffff;
+  background: #669900;
+  text-align: center;
+  border-radius: 0.1rem;
+  color: #CCCCCC;
+}
+.right_btn_list a.search_btn {
+  height: 1.2rem;
+  padding: 0 0.35rem;
+  margin-right: 0.45rem;
+  border-radius: 0.2rem;
+  margin-top: 0.35rem;
+  color: #ffffff;
+}
+.search_wrap {
+  width: 100%;
+  height: 2rem;
+  position: absolute;
+  left: 0;
+  top: 2rem;
+  background-color: rgba(0, 0, 0, 0.93);
+  z-index: 2;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 0.25rem;
+}
+.inputSearch {
+  width: 12.25rem;
+  height: 1.5rem;
+  float: left;
+  overflow: hidden;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin-right: 0.25rem;
+}
+.inputSearch input {
+  width: 100%;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  background-color: #999999;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-size: 0.6rem;
+  padding-left: 0.25rem;
+  border-radius: 0.15rem 0 0 0.15rem;
+}
+.inputSearch input::-webkit-input-placeholder {
+  color: #333333;
+}
+.inputSearch input:focus {
+  background-color: #ffffff;
+}
+.search_wrap .submitBtn {
+  width: 3rem;
+  height: 1.5rem;
+  color: #ffffff;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  text-align: center;
+  float: left;
+  background-color: #414040;
+  border-radius: 0 0.15rem 0.15rem 0;
+}
+.main {
+  width: 100%;
+  padding-top: 4.25rem;
+  position: relative;
+  z-index: 0;
+}
+.navCon {
+  width: 100%;
+  height: 2.45rem;
+  padding: 0.25rem 0 0.2rem 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-bottom: 1px solid #CCCCCC;
+  overflow: hidden;
+}
+.navCon #navList {
+  height: 1.9rem;
+  white-space: nowrap;
+  font-size: 0;
+}
+.navCon #navList li {
+  height: 1.9rem;
+  line-height: 1.9rem;
+  display: inline-block;
+  font-size: 1rem;
+}
+.navCon #navList li.active {
+  background: #669900;
+}
+.navCon #navList li.active a {
+  color: #ffffff;
+}
+.navCon #navList li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #000000;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 0 0.5rem;
+}
+.main div {
+  width: 100%;
+  height: 1.25rem;
+}

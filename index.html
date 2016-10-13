@@ -3,8 +3,176 @@
 <head>
 	<meta charset="UTF-8">
 	<title>精仿音悦台</title>
+	<link rel="stylesheet" href="css/index.css">
+	<script>
+	setRem();
+	window.addEventListener('onorientationchange',function(){
+		setRem();
+		window.location.reload();
+	});
+	window.addEventListener('resize',function(){
+		setRem();
+		window.location.reload();
+	});
+	function setRem() {
+		//设置设备的像素比
+		var PixelRatio = 1/window.devicePixelRatio;
+		document.write('<meta name="viewport" content="width=device-width, initial-scale='+PixelRatio+', minimum-scale='+PixelRatio+', maximum-scale='+PixelRatio+', user-scalable=no">');
+		var  html = document.getElementsByTagName('html')[0];
+		var  viewW = html.getBoundingClientRect().width;
+		//设置根字体大小
+		html.style.fontSize= viewW/16 + 'px';
+	}
+	
+	</script>
 </head>
 <body>
-	
+	<section class="wrapper">
+		<div class="top_wrap">
+			<a class="logo" href="javascript:;"></a>
+			<div id="channcel_btn" class="channcel_btn_show"></div>
+			<div id="channcel_list" class="channcel_list list_hide">
+				<ul>
+					<li><a href="javascript:;">首页</a></li>
+					<li><a href="javascript:;">MV</a></li>
+					<li><a href="javascript:;">V榜</a></li>
+					<li><a href="javascript:;">悦单</a></li>
+					<li><a href="javascript:;">音悦</a></li>
+					<li><a href="javascript:;">商城</a></li>
+					<li><a href="javascript:;">节目</a></li>
+					<li><a href="javascript:;">饭团</a></li>
+					<li><a href="javascript:;">咨询</a></li>
+					<li><a href="javascript:;">我的家</a></li>
+					<li><a href="javascript:;">APP下载</a></li>
+					<li><a href="javascript:;">热门应用</a></li>
+				</ul>
+			</div>
+			<div class="right_btn_list">
+				<a class="search_btn" href="javascript:;">搜索</a>
+				<a href="javascript:;">登录</a>
+				<a href="javascript:;">注册</a>
+			</div>
+		</div>
+		<div class="search_wrap">
+			<form action="/">
+				<div class="inputSearch">
+					<input type="text" placeholder="请输入搜索内容">
+				</div>
+				<button class="submitBtn" type="submit">搜索</button>
+			</form>
+		</div>
+		<section class="main">
+			<nav id="navScroll" class="navCon">
+				<ul id="navList">
+					<li class="active">
+					          <a href="javascript:void(0);" class="selected" data-tab="index">首页</a>
+					</li>
+					<li>
+					          <a href="javascript:void(0);" data-tab="mv">MV</a>
+					</li>
+					<li>
+					          <a href="javascript:void(0);" data-tab="pl">悦单</a>
+					 </li>
+					 <li>
+					          <a href="javascript:void(0);" data-tab="vchart">V榜</a>
+					</li>
+					<li>
+					          <a href="http://shop.yinyuetai.com/">商城</a>
+					 </li>
+					<li>
+						<a href="http://zhongchou.yinyuetai.com/wap">众筹</a></li>
+					<li>
+					          <a href="http://www.yinyuetai.com/fanMass" data-tab="wapfan">饭团</a>
+					</li>
+					<li>
+					          <a href="javascript:void(0);" data-tab="program">节目</a>
+					</li>
+					<li>
+					          <a href="javascript:void(0);" data-tab="stage">音悦stage</a>
+					</li>
+					<li>
+					          <a href="javascript:void(0);" data-tab="apps/mobile">APP下载</a>
+					</li>
+					<li>
+					          <a href="http://news.yinyuetai.com/" target="_blank">资讯</a>
+					</li>
+					<li>
+					          <a href="http://i.yinyuetai.com" target="_blank">我的家</a>
+					</li>
+					<li>
+					          <a href="javascript:void(0);" data-tab="apps">热门应用</a>
+					</li>
+				</ul>
+			</nav>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+			<div>1111111111111111</div>
+		</section>
+	</section>
+	<script type="text/javascript">
+		window.onload = function(){
+
+			navTab();
+		}
+		function navTab(){
+			var oBtn = document.getElementById('channcel_btn');
+			var oList = document.getElementById('channcel_list');
+			var onOff = true;
+			oBtn.addEventListener('touchstart',function(e){
+				if(oBtn.className == 'channcel_btn_show'){
+					oBtn.className = 'channcel_btn_close';
+					oList.style.display="block";
+				}else{
+					oBtn.className = 'channcel_btn_show';
+					oList.style.display="none";
+				}
+				e.stopPropagation();
+			});
+			document.addEventListener('touchstart',function(){
+				if(oBtn.className == 'channcel_btn_close'){
+					oBtn.className = 'channcel_btn_show';
+					oList.style.display="none";
+				}
+				
+			});
+			oList.addEventListener('touchstart',function(e){
+				e.stopPropagation();
+			});
+		}
+	</script>
 </body>
 </html>
