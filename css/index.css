@@ -212,6 +212,7 @@ a {
   height: 1.9rem;
   white-space: nowrap;
   font-size: 0;
+  float: left;
 }
 .navCon #navList li {
   height: 1.9rem;
