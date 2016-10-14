@@ -235,6 +235,49 @@ a {
   -webkit-box-sizing: border-box;
   padding: 0 0.5rem;
 }
+/*轮播图样式*/
+#scrollWrap {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+#picList {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+#picList li {
+  float: left;
+  overflow: hidden;
+}
+#picList li a {
+  float: left;
+}
+#picList img {
+  width: 100%;
+  display: block;
+}
+#btn {
+  height: 0.5rem;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.15rem;
+  text-align: right;
+}
+#btn span {
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 0.4rem;
+  background: rgba(0, 0, 0, 0.5);
+  margin: 0 0.125rem;
+}
+#btn span.active {
+  background: #9c0;
+}
 .main div {
   width: 100%;
   height: 1.25rem;

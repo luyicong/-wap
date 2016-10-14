@@ -1,3 +1,4 @@
+//使用规则：如果要获取transform的属性值，就必须先通过此函数设置transform的属性值
 function cssTransform(el,attr,val) {
 	if(!el.transform){
 		el.transform = {};

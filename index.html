@@ -104,6 +104,22 @@
 					</li>
 				</ul>
 			</nav>
+			<div id="scrollWrap">
+				<ul id="picList">
+					<li><a href="#"><img src="img/b1.jpg"/></a></li>
+					<li><a href="#"><img src="img/b2.jpg"/></a></li>
+					<li><a href="#"><img src="img/b3.jpg"/></a></li>
+					<li><a href="#"><img src="img/b4.jpg"/></a></li>
+					<li><a href="#"><img src="img/b5.jpg"/></a></li>
+				</ul>
+				<div id="btn">
+					<span class="active"></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
 			<div>1111111111111111</div>
 			<div>1111111111111111</div>
 			<div>1111111111111111</div>
@@ -148,7 +164,7 @@
 		window.onload = function(){
 
 			navTab();
-
+			scrollPic();
 			navScroll();
 		}
 		function navTab(){
@@ -176,7 +192,83 @@
 				e.stopPropagation();
 			});
 		}
-
+		
+		function scrollPic(){
+			var oWrap = document.querySelector('#scrollWrap');
+			var oList = document.querySelector('#picList');
+			oList.innerHTML+=oList.innerHTML;
+			var aLi = document.querySelectorAll('#picList li');
+			var oNav = document.querySelectorAll('#btn span');
+			var css = document.createElement('style');
+			var timer = null;
+			var iNow = 0;
+			var style = '#scrollWrap{height:'+aLi[0].offsetHeight+'px;}';
+				style+='#picList{width:'+aLi.length+'00%;}';
+				style+='#picList li{width:'+1/aLi.length*100+'%;}';
+				css.innerHTML+= style;
+			document.head.appendChild(css);
+			//手指的初始坐标
+			var startPoint = 0;
+			//元素初始移动的距离
+			var startX = 0;
+			cssTransform(oList,'translateX',0)
+			
+			autoPlay();
+			
+			oWrap.addEventListener('touchstart',function(e){
+				clearInterval(timer);
+				oList.style.WebkitTransition=oList.style.transition='none';
+				var translateX = cssTransform(oList,'translateX');
+				iNow = Math.round(-translateX/oWrap.offsetWidth);
+				if(iNow==0){
+					iNow=oNav.length;
+				}
+				if(iNow==aLi.length-1){
+					iNow=oNav.length-1;
+				}
+				cssTransform(oList,'translateX',-iNow*oWrap.offsetWidth);
+				startPoint = e.changedTouches[0].pageX;
+				startX = cssTransform(oList,'translateX');
+			});
+			oWrap.addEventListener('touchmove',function(e){
+				//当前移动位置的坐标
+				var nowPoint = e.changedTouches[0].pageX;
+				//初始位置与移动位置的差值，求出移动的距离
+				var disX = nowPoint - startPoint;
+				//元素总共移动的距离=之前的距离+当前移动的距离
+				cssTransform(oList,'translateX',startX + disX);
+			});
+			oWrap.addEventListener('touchend',function(){
+				var translateX = cssTransform(oList,'translateX');
+				iNow = Math.round(-translateX/oWrap.offsetWidth);
+				play();
+				autoPlay();
+			});
+			//自动播放
+			function autoPlay(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					if(iNow==aLi.length-1){
+						iNow=oNav.length-1;
+					}
+					oList.style.WebkitTransition=oList.style.transition='none';
+					cssTransform(oList,'translateX',-iNow*oWrap.offsetWidth);
+					iNow++;
+					setTimeout(function(){
+						play();
+					},30);
+				},2500);
+			}
+			
+			function play(){
+				oList.style.WebkitTransition=oList.style.transition='.5s';
+				cssTransform(oList,'translateX',-iNow*oWrap.offsetWidth);
+				for(var i=0,len = oNav.length;i<len;i++){
+					oNav[i].className = '';
+				}
+				oNav[iNow%oNav.length].className = 'active';
+			}
+		}
 		function navScroll(){
 			var oNavscroll = document.querySelector('#navScroll');
 			var oNavlist = document.querySelector('#navList');
