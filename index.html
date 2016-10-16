@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh_CN">
 <head>
 	<meta charset="UTF-8">
 	<title>精仿音悦台</title>
@@ -211,6 +211,8 @@
 			var startPoint = 0;
 			//元素初始移动的距离
 			var startX = 0;
+			var isMove = true;
+			var isFirst = true;
 			cssTransform(oList,'translateX',0)
 			
 			autoPlay();
@@ -227,16 +229,34 @@
 					iNow=oNav.length-1;
 				}
 				cssTransform(oList,'translateX',-iNow*oWrap.offsetWidth);
-				startPoint = e.changedTouches[0].pageX;
+				startPoint = e.changedTouches[0];
 				startX = cssTransform(oList,'translateX');
+				isMove = true;
+				isFirst = true;
 			});
 			oWrap.addEventListener('touchmove',function(e){
+				//如果isMove为假即表示上下滑动，return掉
+				if(!isMove){
+					return;
+				}
 				//当前移动位置的坐标
-				var nowPoint = e.changedTouches[0].pageX;
-				//初始位置与移动位置的差值，求出移动的距离
-				var disX = nowPoint - startPoint;
-				//元素总共移动的距离=之前的距离+当前移动的距离
-				cssTransform(oList,'translateX',startX + disX);
+				var nowPoint = e.changedTouches[0];
+				//X轴初始位置与移动位置的差值，求出移动的距离
+				var disX = nowPoint.pageX - startPoint.pageX;
+				//Y轴初始位置与移动位置的差值，求出移动的距离
+				var disY = nowPoint.pageY - startPoint.pageY;
+				//判断isFirst为真，只执行一次
+				if(isFirst){
+					isFirst = false;
+					//是否是上下滑动
+					if(Math.abs(disY) > Math.abs(disX)){
+						isMove = false;
+					}
+				}
+				if(isMove){
+					//元素总共移动的距离=之前的距离+当前移动的距离
+					cssTransform(oList,'translateX',startX + disX);
+				}
 			});
 			oWrap.addEventListener('touchend',function(){
 				var translateX = cssTransform(oList,'translateX');
@@ -276,33 +296,78 @@
 			var oStartX = 0;
 			var minX = oNavscroll.clientWidth - oNavlist.offsetWidth;
 			var step = 1;
-			console.log(minX);
+			var lastX = 0;
+			var lastTime = 0;
+			var lastDis = 0;
+			var lastTimeDis = 0;
+			// console.log(oNavscroll.clientWidth,oNavlist.offsetWidth,minX);
 			oNavscroll.addEventListener('touchstart',function(e){
 				oStartpoint = e.changedTouches[0].pageX;
 				oStartX = cssTransform(oNavlist,'translateX');
 				// console.log(oStartpoint,oStartX);
 				step = 1;
+				lastX = oStartX;
+				lastTime = new Date().getTime();
+				lastDis = 0;
+				lastTimeDis = 0;
 			});
 			oNavscroll.addEventListener('touchmove',function(e){
 				var oNowpoint = e.changedTouches[0].pageX;
 				var disX = oNowpoint - oStartpoint;
 				// console.log(oNowpoint,disX);
 				var moveLeft = oStartX+disX;
+				var nowTime = new Date().getTime();
+				//左边
 				if(moveLeft > 0){
 					//计算拉动超出长度系数大小，超出越大 系数越小
-					step = 1-moveLeft / oNavscroll.clientWidth+0.1;
+					step = 1-moveLeft / oNavscroll.clientWidth+.05;
 					//设置滑动距离
 					moveLeft = parseInt(moveLeft*step);
-				}else if(moveLeft < minX){
+				}
+				//右边
+				if(moveLeft < minX){
 					//计算超出值
 					var over = minX - moveLeft;
 					//根据超出值，计算拉动系数
-					step = 1-over / oNavscroll.clientWidth+0.1;
+					step = 1-over / oNavscroll.clientWidth+.05
 					over = parseInt(over*step);
 					//设置滑动距离
 					moveLeft = minX - over;
 				}
+				lastDis = moveLeft - lastX;
+				lastTimeDis = nowTime - lastTime;
+				lastX = moveLeft;
+				lastTime = nowTime;
 				cssTransform(oNavlist,'translateX',moveLeft);
+			});
+			/*
+			缓冲快慢：与移动的最后一次移动速度有关
+			速度快缓冲距离就大，速度小缓冲距离就小
+			速度 = 距离/时间
+			距离 = 上次位置和移动后位置的差值
+			时间 = 上次时间和移动后时间的差值
+
+			 */
+			oNavscroll.addEventListener('touchend',function(){
+				var iSpeed = (lastDis/lastTimeDis)*200;
+				var moveLeft = cssTransform(oNavlist,'translateX');
+				var target = moveLeft + iSpeed;
+				var type='cubic-bezier(.34,.92,.58,.9)';
+				var iTime = Math.abs(iSpeed*.9);
+				iTime=iTime<500?500:iTime;
+				//左边
+				if(target > 0){
+					target = 0;
+					type = 'cubic-bezier(.08,1.24,.6,1)';
+				//右边
+				}
+				if(target < minX){
+					target = minX;
+					type = 'cubic-bezier(.08,1.24,.6,1)';
+				}
+				oNavlist.style.WebkitTransition=oNavlist.style.transition=iTime+'ms '+type;
+				cssTransform(oNavlist,'translateX',target);
+				// console.log(lastDis,lastTimeDis,iSpeed);
 			});
 		}
 	</script>
