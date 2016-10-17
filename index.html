@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="css/index.css">
 	<script>
 	setRem();
+	//手机横竖屏切换
 	window.addEventListener('onorientationchange',function(){
 		setRem();
 		window.location.reload();
@@ -28,7 +29,8 @@
 </head>
 <body>
 	<section class="wrapper">
-		<div class="top_wrap">
+		<!--顶部 start-->
+		<section class="top_wrap">
 			<a class="logo" href="javascript:;"></a>
 			<div id="channcel_btn" class="channcel_btn_show"></div>
 			<div id="channcel_list" class="channcel_list list_hide">
@@ -52,59 +54,65 @@
 				<a href="javascript:;">登录</a>
 				<a href="javascript:;">注册</a>
 			</div>
-		</div>
-		<div class="search_wrap">
+		</section>
+		<!--顶部 end-->
+		<!--搜索框 start-->
+		<section class="search_wrap">
 			<form action="/">
 				<div class="inputSearch">
 					<input type="text" placeholder="请输入搜索内容">
 				</div>
 				<button class="submitBtn" type="submit">搜索</button>
 			</form>
-		</div>
+		</section>
+		<!--搜索框 end-->
 		<section class="main">
+			<!--导航菜单 start-->
 			<nav id="navScroll" class="navCon">
 				<ul id="navList">
 					<li class="active">
-					          <a href="javascript:void(0);" class="selected" data-tab="index">首页</a>
+					          <a href="javascript:void(0);" class="selected">首页</a>
 					</li>
 					<li>
-					          <a href="javascript:void(0);" data-tab="mv">MV</a>
+					          <a href="javascript:void(0);" >MV</a>
 					</li>
 					<li>
-					          <a href="javascript:void(0);" data-tab="pl">悦单</a>
+					          <a href="javascript:void(0);">悦单</a>
 					 </li>
 					 <li>
-					          <a href="javascript:void(0);" data-tab="vchart">V榜</a>
+					          <a href="javascript:void(0);">V榜</a>
 					</li>
 					<li>
-					          <a href="http://shop.yinyuetai.com/">商城</a>
+					          <a href="javascript:void(0);">商城</a>
 					 </li>
 					<li>
-						<a href="http://zhongchou.yinyuetai.com/wap">众筹</a></li>
+						<a href="javascript:void(0);">众筹</a></li>
 					<li>
-					          <a href="http://www.yinyuetai.com/fanMass" data-tab="wapfan">饭团</a>
+					          <a href="javascript:void(0);">饭团</a>
 					</li>
 					<li>
-					          <a href="javascript:void(0);" data-tab="program">节目</a>
+					          <a href="javascript:void(0);">节目</a>
 					</li>
 					<li>
-					          <a href="javascript:void(0);" data-tab="stage">音悦stage</a>
+					          <a href="javascript:void(0);">音悦stage</a>
 					</li>
 					<li>
-					          <a href="javascript:void(0);" data-tab="apps/mobile">APP下载</a>
+					          <a href="javascript:void(0);">APP下载</a>
 					</li>
 					<li>
-					          <a href="http://news.yinyuetai.com/" target="_blank">资讯</a>
+					          <a href="javascript:void(0);" target="_blank">资讯</a>
 					</li>
 					<li>
-					          <a href="http://i.yinyuetai.com" target="_blank">我的家</a>
+					          <a href="javascript:void(0);" target="_blank">我的家</a>
 					</li>
 					<li>
-					          <a href="javascript:void(0);" data-tab="apps">热门应用</a>
+					          <a href="javascript:void(0);">热门应用</a>
 					</li>
 				</ul>
 			</nav>
-			<div id="scrollWrap">
+			<!--导航菜单 end-->
+			<!--图片幻灯片 start-->
+			<section id="scrollWrap">
 				<ul id="picList">
 					<li><a href="#"><img src="img/b1.jpg"/></a></li>
 					<li><a href="#"><img src="img/b2.jpg"/></a></li>
@@ -119,44 +127,656 @@
 					<span></span>
 					<span></span>
 				</div>
-			</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
-			<div>1111111111111111</div>
+			</section>
+			<!--图片幻灯片 end-->
+			<!--MV内容列表 start-->
+			<section class="com_item">
+				<div class="groupList">
+					<header class="title">
+						<h3>MV首播</h3>
+						<a class="more" href="#">更多></a>
+					</header>
+					<nav class="gruopNav">
+						<a href="javascript:;">全部</a>
+						<a href="javascript:;" >内地</a>
+						<a href="javascript:;" >港台</a>
+						<a href="javascript:;" >欧美</a>
+						<a href="javascript:;" >韩国</a>
+						<a href="javascript:;" >日本</a>
+						<span></span>
+					</nav>
+					<section class="groupComList">
+						<ul class="listNext">loading</ul>
+						<ul class="listShow">
+							<li><a href="#">
+								<div class="img"><img src="img/img_1.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_2.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_1.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_2.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_1.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_2.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+						</ul>
+						<ul class="listNext">loading</ul>
+					</section>
+				</div>
+			</section>
+			<!--MV内容列表 end-->
+			<!--正在流行内容列表 start-->
+			<section class="com_item">
+				<div class="groupList">
+					<header class="title">
+						<h3>正在流行</h3>
+						<a class="more" href="#">更多></a>
+					</header>
+					<nav class="gruopNav">
+						<a href="javascript:;">全部</a>
+						<a href="javascript:;">影视</a>
+						<a href="javascript:;">内地</a>
+						<a href="javascript:;">港台</a>
+						<a href="javascript:;">欧美</a>
+						<a href="javascript:;">韩国</a>
+						<a href="javascript:;">日本</a>
+						<span></span>
+					</nav>
+					<section class="groupComList">
+						<ul class="listNext">loading</ul>
+						<ul class="listShow">
+							<li><a href="#">
+								<div class="img"><img src="img/img_3.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_4.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_3.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_4.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_3.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_4.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+						</ul>
+						<ul class="listNext">loading</ul>
+					</section>
+				</div>
+			</section>
+			<!--正在流行内容列表 end-->
+			<!--音悦V榜 start-->
+			<section class="com_item">
+				<div class="groupList">
+					<header class="title">
+						<h3>音悦V榜</h3>
+						<a class="more" href="#">更多></a>
+					</header>
+					<nav class="gruopNav">
+						<a href="javascript:;">全部</a>
+						<a href="javascript:;">影视</a>
+						<a href="javascript:;">内地</a>
+						<a href="javascript:;">港台</a>
+						<a href="javascript:;">欧美</a>
+						<a href="javascript:;">韩国</a>
+						<a href="javascript:;">日本</a>
+						<span></span>
+					</nav>
+					<section class="groupComList">
+						<ul class="listNext">loading</ul>
+						<ul class="listShow">
+							<li><a href="#">
+								<div class="img"><img src="img/img_3.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_4.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_3.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_4.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_3.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_4.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+						</ul>
+						<ul class="listNext">loading</ul>
+					</section>
+				</div>
+			</section>
+			<!--音悦V榜 end-->
+			<!--自制节目 start-->
+			<section class="com_item">
+				<div class="groupList">
+					<header class="title">
+						<h3>音悦V榜</h3>
+						<a class="more" href="#">更多></a>
+					</header>
+					<nav class="gruopNav">
+						<a href="javascript:;">全部</a>
+						<a href="javascript:;">影视</a>
+						<a href="javascript:;">内地</a>
+						<a href="javascript:;">港台</a>
+						<a href="javascript:;">欧美</a>
+						<a href="javascript:;">韩国</a>
+						<a href="javascript:;">日本</a>
+						<span></span>
+					</nav>
+					<section class="groupComList">
+						<ul class="listNext">loading</ul>
+						<ul class="listShow">
+							<li><a href="#">
+								<div class="img"><img src="img/img_3.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_4.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_3.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_4.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_3.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_4.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+						</ul>
+						<ul class="listNext">loading</ul>
+					</section>
+				</div>
+			</section>
+			<!--自制节目 end-->
+			<!--音悦人 start-->
+			<section class="com_item stactic_item">
+				<div class="groupList">
+					<header class="title">
+						<h3>音悦人</h3>
+						<a class="more" href="#">更多></a>
+					</header>
+					<section class="listCon">
+						<ul class="listShow">
+							<li><a href="#">
+								<div class="img"><img src="img/img_11.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_12.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_11.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_12.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_11.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_12.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+						</ul>
+					</section>
+				</div>
+			</section>
+			<!--音悦人 end-->
+			<!--热门推荐 start-->
+			<section class="com_item stactic_item">
+				<div class="groupList">
+					<header class="title">
+						<h3>热门推荐</h3>
+						<a class="more" href="#">更多></a>
+					</header>
+					<section class="listCon">
+						<ul class="listShow">
+							<li><a href="#">
+								<div class="img"><img src="img/img_6.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_6.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_5.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_6.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_5.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_6.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+						</ul>
+					</section>
+				</div>
+			</section>
+			<!--热门推荐 end-->
+			<!--精品悦单 start-->
+			<section class="com_item stactic_item">
+				<div class="groupList">
+					<header class="title">
+						<h3>精品悦单</h3>
+						<a class="more" href="#">更多></a>
+					</header>
+					<section class="listCon">
+						<ul class="listShow">
+							<li><a href="#">
+								<div class="img"><img src="img/img_7.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_8.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_7.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_8.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_7.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_8.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+						</ul>
+					</section>
+				</div>
+			</section>
+			<!--精品悦单 end-->
+			<!--猜你喜欢 start-->
+			<section class="com_item stactic_item">
+				<div class="groupList">
+					<header class="title">
+						<h3>猜你喜欢</h3>
+						<a class="more" href="#">更多></a>
+					</header>
+					<section class="listCon">
+						<ul class="listShow">
+							<li><a href="#">
+								<div class="img"><img src="img/img_9.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_10.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_9.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_10.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_9.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+							<li><a href="#">
+								<div class="img"><img src="img/img_10.jpg" alt=""></div>
+								<div class="info">
+									<p class="t_title">谁说我不能哭泣 官方版官方版官方版官方版</p>
+									<p class="sNum">
+										<span class="playNum">3.7万</span>
+										<span class="plNum">300</span>
+									</p>
+								</div>
+							</a></li>
+						</ul>
+					</section>
+				</div>
+			</section>
+			<!--猜你喜欢 end-->
+			<!--newApp start-->
+			<section class="com_item">
+				<section class="newsApp">
+					<h3>热门应用</h3>
+					<a href="javascript:void(0);">更多</a>
+				</section>
+			</section>
+			<!--newApp end-->
+			<section class="footer">Copyright © 2016 www.congitlive.cn</section>
 		</section>
 	</section>
 	<script src="js/transform.js" type="text/javascript" charset="utf-8"></script>
@@ -166,6 +786,7 @@
 			navTab();
 			scrollPic();
 			navScroll();
+			tab();
 		}
 		function navTab(){
 			var oBtn = document.getElementById('channcel_btn');
@@ -202,10 +823,9 @@
 			var css = document.createElement('style');
 			var timer = null;
 			var iNow = 0;
-			var style = '#scrollWrap{height:'+aLi[0].offsetHeight+'px;}';
-				style+='#picList{width:'+aLi.length+'00%;}';
-				style+='#picList li{width:'+1/aLi.length*100+'%;}';
-				css.innerHTML+= style;
+			var style='#picList{width:'+aLi.length+'00%;}';
+			style+='#picList li{width:'+1/aLi.length*100+'%;}';
+			css.innerHTML+= style;
 			document.head.appendChild(css);
 			//手指的初始坐标
 			var startPoint = 0;
@@ -302,6 +922,7 @@
 			var lastTimeDis = 0;
 			// console.log(oNavscroll.clientWidth,oNavlist.offsetWidth,minX);
 			oNavscroll.addEventListener('touchstart',function(e){
+				oNavlist.style.WebkitTransition=oNavlist.style.transition='none';
 				oStartpoint = e.changedTouches[0].pageX;
 				oStartX = cssTransform(oNavlist,'translateX');
 				// console.log(oStartpoint,oStartX);
@@ -349,8 +970,11 @@
 
 			 */
 			oNavscroll.addEventListener('touchend',function(){
+				//距离差值/时间差值=速度 速度*速度系数=缓冲速度
 				var iSpeed = (lastDis/lastTimeDis)*200;
+				//获取当前距离
 				var moveLeft = cssTransform(oNavlist,'translateX');
+				//目标点距离 = 当前距离+缓冲速度
 				var target = moveLeft + iSpeed;
 				var type='cubic-bezier(.34,.92,.58,.9)';
 				var iTime = Math.abs(iSpeed*.9);
@@ -369,6 +993,111 @@
 				cssTransform(oNavlist,'translateX',target);
 				// console.log(lastDis,lastTimeDis,iSpeed);
 			});
+		}
+		function tab(){
+			var tabList = document.querySelectorAll('.groupComList');
+			var tabNav = document.querySelectorAll('.gruopNav');
+			var width = tabNav[0].offsetWidth;
+			for(var i=0,len=tabNav.length;i<len;i++){
+				swipe(tabNav[i],tabList[i]);
+			}
+			function swipe(nav,list){
+				cssTransform(list,'translateX',-width);
+				var startPoint = 0;
+				//元素初始移动的距离
+				var startX = 0;
+				var iNow = 0;
+				var isMove = true;
+				var isFirst = true;
+				var next = document.querySelectorAll('.listNext');
+				var isLoad = false;
+				var listNavA = nav.getElementsByTagName('a');
+				var iSpanActive = nav.getElementsByTagName('span')[0];
+				list.addEventListener('touchstart',function(e){
+					if(isLoad){
+						return;
+					}
+					list.style.WebkitTransition=list.style.transition='none';
+					startPoint = e.changedTouches[0];
+					startX = cssTransform(list,'translateX');
+					isMove = true;
+					isFirst = true;
+				});
+				list.addEventListener('touchmove',function(e){
+					if(isLoad){
+						return;
+					}
+					//如果isMove为假即表示上下滑动，return掉
+					if(!isMove){
+						return;
+					}
+					//当前移动位置的坐标
+					var nowPoint = e.changedTouches[0];
+					//X轴初始位置与移动位置的差值，求出X轴移动的距离
+					var disX = nowPoint.pageX - startPoint.pageX;
+					//Y轴初始位置与移动位置的差值，求出Y轴移动的距离
+					var disY = nowPoint.pageY - startPoint.pageY;
+					//判断isFirst为真，只执行一次
+					if(isFirst){
+						isFirst = false;
+						//是否是上下滑动
+						if(Math.abs(disY) > Math.abs(disX)){
+							isMove = false;
+						}
+					}
+					if(isMove){
+						//元素总共移动的距离=之前的距离+当前移动的距离
+						cssTransform(list,'translateX',startX + disX);
+					}
+					if(Math.abs(disX) > width/2){
+						moveEnd(disX);
+					}
+				});
+				list.addEventListener('touchend',function(){
+					if(isLoad){
+						return;
+					}
+					list.style.WebkitTransition=list.style.transition = '.3s';
+					cssTransform(list,'translateX',-width);
+				});
+				function moveEnd(disX){
+					isLoad = true;
+					//通过正负值判断向左或向右
+					var dir = disX/Math.abs(disX);
+					var target = dir > 0?0:-2*width;
+					iNow -= dir;
+					if(iNow<0){
+						iNow = listNavA.length-1;
+					}
+					if(iNow>listNavA.length-1){
+						iNow = 0;
+					}
+					list.style.WebkitTransition=list.style.transition = '.5s';
+					cssTransform(list,'translateX',target);
+					list.addEventListener('webkitTransitionEnd',tranEnd);
+					list.addEventListener('transitionend',tranEnd);
+				}
+				function tranEnd(){
+					//获取导航移动距离
+					var left = listNavA[iNow].offsetLeft;
+					//设置导航选中
+					cssTransform(iSpanActive,'translateX',left);
+					list.removeEventListener('webkitTransitionEnd',tranEnd);
+					list.removeEventListener('transitionend',tranEnd);
+					for(var i=0,len=next.length;i<len;i++){
+						next[i].style.opacity = 1;
+					}
+					//模拟ajax重新加载效果，在工作中应该通过ajax请求数据通过修改listShow里面的内容后执行的代码
+					setTimeout(function(){
+						list.style.WebkitTransition=list.style.transition = 'none';
+						cssTransform(list,'translateX',-width);
+						isLoad = false;
+						for(var i=0,len=next.length;i<len;i++){
+							next[i].style.opacity = 0;
+						}
+					},800);
+				}
+			}
 		}
 	</script>
 </body>
