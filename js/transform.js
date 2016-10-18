@@ -15,6 +15,7 @@ function cssTransform(el,attr,val) {
 					break;
 				case "translateX":
 				case "translateY":
+				case "translateZ":
 					sVal +=s+"("+el.transform[s]+"px) ";
 					break;
 				case "scaleX":
