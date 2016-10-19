@@ -176,7 +176,7 @@ a {
   -webkit-box-sizing: border-box;
   font-size: 0.6rem;
   padding-left: 0.25rem;
-  border-radius: 0.15rem 0 0 0.15rem;
+  border-radius: 0.2rem 0 0 0.2rem;
 }
 .inputSearch input::-webkit-input-placeholder {
   color: #333333;
@@ -203,8 +203,11 @@ a {
 }
 .navCon {
   width: 100%;
-  height: 2.45rem;
-  padding: 0.25rem 0 0.2rem 0;
+  height: 2.35rem;
+  padding: 0.2rem 0 0 0;
+  /*3d模式下隐藏背面，幻灯片切换出现闪烁问题*/
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   border-bottom: 1px solid #CCCCCC;
@@ -215,12 +218,14 @@ a {
   white-space: nowrap;
   font-size: 0;
   float: left;
+  /*3d模式下隐藏背面，幻灯片切换出现闪烁问题*/
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .navCon #navList li {
   height: 1.9rem;
   line-height: 1.9rem;
   display: inline-block;
-  font-size: 1rem;
 }
 .navCon #navList li.active {
   background: #669900;
@@ -236,15 +241,22 @@ a {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   padding: 0 0.5rem;
+  font-size: 1rem;
 }
 /*轮播图样式*/
 #scrollWrap {
   width: 100%;
   overflow: hidden;
   position: relative;
+  /*3d模式下隐藏背面，幻灯片切换出现闪烁问题*/
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 #picList {
   overflow: hidden;
+  /*3d模式下隐藏背面，幻灯片切换出现闪烁问题*/
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 #picList li {
   float: left;
@@ -301,6 +313,9 @@ a {
   -webkit-box-sizing: border-box;
   padding: 0.25rem 0 0 0;
   float: left;
+  /*3d模式下隐藏背面，幻灯片切换出现闪烁问题*/
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 .com_item .groupList:after {
   content: " ";
@@ -368,6 +383,9 @@ a {
   min-height: 7.5rem;
   float: left;
   padding-top: 0.25rem;
+  /*3d模式下隐藏背面，幻灯片切换出现闪烁问题*/
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .groupComList ul {
   width: 33.33333%;
@@ -459,7 +477,6 @@ a {
   font-size: 1rem;
   line-height: 7.5rem;
   text-align: center;
-  opacity: 0;
 }
 .newsApp {
   width: 100%;
@@ -489,4 +506,120 @@ a {
   font-size: 0.6rem;
   line-height: 2.9rem;
   text-align: center;
+}
+.wrapLoading {
+  width: 100%;
+  min-height: 7.5rem;
+  margin: 0 auto;
+  position: relative;
+  display: none;
+}
+.loadingCon {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -0.5rem;
+}
+.loadingCon div {
+  width: 0.2rem;
+  height: 0.2rem;
+  background: #669900;
+  border-radius: 0.1rem;
+  position: absolute;
+  animation: 2s linear infinite loading;
+  -webkit-animation: 2s linear infinite loading;
+}
+.wrapLoading .loadingCon_2 {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.spot_1 {
+  left: 0;
+  top: 0;
+}
+.spot_2 {
+  right: 0;
+  top: 0;
+}
+.spot_3 {
+  right: 0;
+  bottom: 0;
+}
+.spot_4 {
+  left: 0;
+  bottom: 0;
+}
+@keyframes loading {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  50% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+@-webkit-keyframes loading {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  50% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+.loadingCon_1 .spot_1 {
+  animation-delay: -1.5s;
+  -webkit-animation-delay: -1.5s;
+}
+.loadingCon_2 .spot_1 {
+  animation-delay: -1.3s;
+  -webkit-animation-delay: -1.3s;
+}
+.loadingCon_1 .spot_2 {
+  animation-delay: -1.1s;
+  -webkit-animation-delay: -1.1s;
+}
+.loadingCon_2 .spot_2 {
+  animation-delay: -0.9s;
+  -webkit-animation-delay: -0.9s;
+}
+.loadingCon_1 .spot_3 {
+  animation-delay: -0.7s;
+  -webkit-animation-delay: -0.7s;
+}
+.loadingCon_2 .spot_3 {
+  animation-delay: -0.5s;
+  -webkit-animation-delay: -0.5s;
+}
+.loadingCon_1 .spot_4 {
+  animation-delay: -0.3s;
+  -webkit-animation-delay: -0.3s;
+}
+.loadingCon_2 .spot_4 {
+  animation-delay: -0.2s;
+  -webkit-animation-delay: -0.1s;
+}
+.loadingText {
+  display: block;
+  width: 100%;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  position: absolute;
+  top: 4.5rem;
+  left: 0;
+  text-align: center;
+  font-size: 0.45rem;
+  color: #669900;
 }

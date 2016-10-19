@@ -1,4 +1,16 @@
-var index=(function(){
+/*
+author:luyicong
+email:980469887@qq.com
+blog:www.congitlive.cn
+*/
+/*
+	在webkit内核的浏览器下使用transition时候出现的闪烁问题，比如：图片幻灯片，滑动选项卡。
+	解决方案：
+		1、给运动元素开启3d硬件加速
+		2、给运动元素本身加上：-webkit-backface:visibtility:hidden;backface:visibtility:hidden; ,这两条css样式
+		3、给运动元素父级加上：-webkit-backface:visibtility:hidden;backface:visibtility:hidden; ,这两条css样式
+*/
+var indexInit=(function(){
 	//初始化
 	function init(){
 		navTab();
@@ -52,8 +64,8 @@ var index=(function(){
 		var startX = 0;
 		var isMove = true;
 		var isFirst = true;
-		//启动移动设备硬件3D加速
-		cssTransform(oList,'translateZ',0);
+		//移动设备启动3d硬件加速
+		cssTransform(oList,'translateZ',0.01);
 		cssTransform(oList,'translateX',0);
 		
 		autoPlay();
@@ -69,10 +81,15 @@ var index=(function(){
 			if(iNow==aLi.length-1){
 				iNow=oNav.length-1;
 			}
-			//启动移动设备硬件3D加速
-			cssTransform(oList,'translateZ',0);
+			//移动设备启动3d硬件加速
+			cssTransform(oList,'translateZ',0.01);
 			cssTransform(oList,'translateX',-iNow*oWrap.offsetWidth);
-			startPoint = e.changedTouches[0];
+			/*存址 
+			touchmove时候与touchstart时候获取的对象e.changedTouches[0]相同，touchmove时候会导致startPoint也会改变,所以最好存值
+			startPoint = e.changedTouches[0]
+			*/
+			//存值
+			startPoint = {pageX:e.changedTouches[0].pageX,pageY:e.changedTouches[0].pageY};
 			startX = cssTransform(oList,'translateX');
 			isMove = true;
 			isFirst = true;
@@ -82,7 +99,7 @@ var index=(function(){
 			if(!isMove){
 				return;
 			}
-			//当前移动位置的坐标
+			//当前移动位置的坐标时间对象
 			var nowPoint = e.changedTouches[0];
 			//X轴初始位置与移动位置的差值，求出移动的距离
 			var disX = nowPoint.pageX - startPoint.pageX;
@@ -97,8 +114,8 @@ var index=(function(){
 				}
 			}
 			if(isMove){
-				//启动移动设备硬件3D加速
-				cssTransform(oList,'translateZ',0);
+				//移动设备启动3d硬件加速
+				cssTransform(oList,'translateZ',0.01);
 				//元素总共移动的距离=之前的距离+当前移动的距离
 				cssTransform(oList,'translateX',startX + disX);
 			}
@@ -117,20 +134,20 @@ var index=(function(){
 					iNow=oNav.length-1;
 				}
 				oList.style.WebkitTransition=oList.style.transition='none';
-				//启动移动设备硬件3D加速
-				cssTransform(oList,'translateZ',0);
+				//移动设备启动3d硬件加速
+				cssTransform(oList,'translateZ',0.01);
 				cssTransform(oList,'translateX',-iNow*oWrap.offsetWidth);
 				iNow++;
 				setTimeout(function(){
 					play();
-				},30);
+				},50);
 			},2500);
 		}
 		
 		function play(){
 			oList.style.WebkitTransition=oList.style.transition='.5s';
-			//启动移动设备硬件3D加速
-			cssTransform(oList,'translateZ',0);
+			//移动设备启动3d硬件加速
+			cssTransform(oList,'translateZ',0.01);
 			cssTransform(oList,'translateX',-iNow*oWrap.offsetWidth);
 			for(var i=0,len = oNav.length;i<len;i++){
 				oNav[i].className = '';
@@ -189,8 +206,8 @@ var index=(function(){
 			lastTimeDis = nowTime - lastTime;
 			lastX = moveLeft;
 			lastTime = nowTime;
-			//启动移动设备硬件3D加速
-			cssTransform(oNavlist,'translateZ',0);
+			//移动设备启动3d硬件加速
+			cssTransform(oNavlist,'translateZ',0.01);
 			cssTransform(oNavlist,'translateX',moveLeft);
 		});
 		/*
@@ -202,13 +219,13 @@ var index=(function(){
 		 */
 		oNavscroll.addEventListener('touchend',function(){
 			//距离差值/时间差值=速度 速度*速度系数=缓冲速度
-			var iSpeed = (lastDis/lastTimeDis)*200;
+			var iSpeed = (lastDis/lastTimeDis)*300;
 			//获取当前距离
 			var moveLeft = cssTransform(oNavlist,'translateX');
 			//目标点距离 = 当前距离+缓冲速度
 			var target = moveLeft + iSpeed;
 			var type='cubic-bezier(.34,.92,.58,.9)';
-			var iTime = Math.abs(iSpeed*.9);
+			var iTime = Math.abs(iSpeed*.8);
 			iTime=iTime<500?500:iTime;
 			//左边
 			if(target > 0){
@@ -221,8 +238,8 @@ var index=(function(){
 				type = 'cubic-bezier(.08,1.24,.6,1)';
 			}
 			oNavlist.style.WebkitTransition=oNavlist.style.transition=iTime+'ms '+type;
-			//启动移动设备硬件3D加速
-			cssTransform(oNavlist,'translateZ',0);
+			//移动设备启动3d硬件加速
+			cssTransform(oNavlist,'translateZ',0.01);
 			cssTransform(oNavlist,'translateX',target);
 			// console.log(lastDis,lastTimeDis,iSpeed);
 		});
@@ -236,6 +253,8 @@ var index=(function(){
 			swipe(tabNav[i],tabList[i]);
 		}
 		function swipe(nav,list){
+			//移动设备启动3d硬件加速
+			cssTransform(list,'translateZ',0.01);
 			cssTransform(list,'translateX',-width);
 			var startPoint = 0;
 			//元素初始移动的距离
@@ -252,7 +271,12 @@ var index=(function(){
 					return;
 				}
 				list.style.WebkitTransition=list.style.transition='none';
-				startPoint = e.changedTouches[0];
+				/*存址 
+				touchmove时候与touchstart时候获取的对象e.changedTouches[0]相同，touchmove时候会导致startPoint也会改变,所以最好存值
+				startPoint = e.changedTouches[0]
+				*/
+				//存值
+				startPoint = {pageX:e.changedTouches[0].pageX,pageY:e.changedTouches[0].pageY};
 				startX = cssTransform(list,'translateX');
 				isMove = true;
 				isFirst = true;
@@ -280,6 +304,8 @@ var index=(function(){
 					}
 				}
 				if(isMove){
+					//移动设备启动3d硬件加速
+					cssTransform(list,'translateZ',0.01);
 					//元素总共移动的距离=之前的距离+当前移动的距离
 					cssTransform(list,'translateX',startX + disX);
 				}
@@ -292,8 +318,8 @@ var index=(function(){
 					return;
 				}
 				list.style.WebkitTransition=list.style.transition = '.3s';
-				//启动移动设备硬件3D加速
-				cssTransform(list,'translateZ',0);
+				//移动设备启动3d硬件加速
+				cssTransform(list,'translateZ',0.01);
 				cssTransform(list,'translateX',-width);
 			});
 			function moveEnd(disX){
@@ -309,8 +335,8 @@ var index=(function(){
 					iNow = 0;
 				}
 				list.style.WebkitTransition=list.style.transition = '.5s';
-				//启动移动设备硬件3D加速
-				cssTransform(list,'translateZ',0);
+				//移动设备启动3d硬件加速
+				cssTransform(list,'translateZ',0.01);
 				cssTransform(list,'translateX',target);
 				list.addEventListener('webkitTransitionEnd',tranEnd);
 				list.addEventListener('transitionend',tranEnd);
@@ -318,24 +344,26 @@ var index=(function(){
 			function tranEnd(){
 				//获取导航移动距离
 				var left = listNavA[iNow].offsetLeft;
-				//启动移动设备硬件3D加速
-				cssTransform(iSpanActive,'translateZ',0);
+				//移动设备启动3d硬件加速
+				cssTransform(iSpanActive,'translateZ',0.01);
 				//设置导航选中
 				cssTransform(iSpanActive,'translateX',left);
 				list.removeEventListener('webkitTransitionEnd',tranEnd);
 				list.removeEventListener('transitionend',tranEnd);
 				for(var i=0,len=next.length;i<len;i++){
-					next[i].style.opacity = 1;
+					// next[i].style.opacity = 1;
+					next[i].querySelector('.wrapLoading').style.display  = 'block';
 				}
 				//模拟ajax重新加载效果，在工作中应该通过ajax请求数据通过修改listShow里面的内容后执行的代码
 				setTimeout(function(){
 					list.style.WebkitTransition=list.style.transition = 'none';
-					//启动移动设备硬件3D加速
-					cssTransform(list,'translateZ',0);
+					//移动设备启动3d硬件加速
+					cssTransform(list,'translateZ',0.01);
 					cssTransform(list,'translateX',-width);
 					isLoad = false;
 					for(var i=0,len=next.length;i<len;i++){
-						next[i].style.opacity = 0;
+						// next[i].style.opacity = 0;
+						next[i].querySelector('.wrapLoading').style.display = 'none';
 					}
 				},800);
 			}
