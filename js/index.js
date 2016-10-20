@@ -13,10 +13,16 @@ blog:www.congitlive.cn
 var indexInit=(function(){
 	//初始化
 	function init(){
+		// offDefaultEvent();
 		navTab();
 		scrollPic();
 		navScroll();
 		tab();
+	}
+	function offDefaultEvent(){
+		document.addEventListener('touchstart',function(e){
+			e.preventDefault();
+		});
 	}
 	//顶部频道点击
 	function navTab(){
@@ -54,10 +60,12 @@ var indexInit=(function(){
 		var css = document.createElement('style');
 		var timer = null;
 		var iNow = 0;
-		var style='#picList{width:'+aLi.length+'00%;}';
-		style+='#picList li{width:'+1/aLi.length*100+'%;}';
-		css.innerHTML+= style;
-		document.head.appendChild(css);
+		console.log(aLi[0].clientHeight);
+		// var style = '#scrollWrap{height:'+aLi[0].offsetHeight+'px;}'
+		// style+='#picList{width:'+aLi.length+'00%;height:'+aLi[0].offsetHeight+'px;}';
+		// style+='#picList li{width:'+1/aLi.length*100+'%;}';
+		// css.innerHTML+= style;
+		// document.head.appendChild(css);
 		//手指的初始坐标
 		var startPoint = 0;
 		//元素初始移动的距离
@@ -65,7 +73,7 @@ var indexInit=(function(){
 		var isMove = true;
 		var isFirst = true;
 		//移动设备启动3d硬件加速
-		cssTransform(oList,'translateZ',0.01);
+		cssTransform(oList,'translateZ',-0.001);
 		cssTransform(oList,'translateX',0);
 		
 		autoPlay();
@@ -82,7 +90,7 @@ var indexInit=(function(){
 				iNow=oNav.length-1;
 			}
 			//移动设备启动3d硬件加速
-			cssTransform(oList,'translateZ',0.01);
+			cssTransform(oList,'translateZ',-0.001);
 			cssTransform(oList,'translateX',-iNow*oWrap.offsetWidth);
 			/*存址 
 			touchmove时候与touchstart时候获取的对象e.changedTouches[0]相同，touchmove时候会导致startPoint也会改变,所以最好存值
@@ -115,7 +123,7 @@ var indexInit=(function(){
 			}
 			if(isMove){
 				//移动设备启动3d硬件加速
-				cssTransform(oList,'translateZ',0.01);
+				cssTransform(oList,'translateZ',-0.001);
 				//元素总共移动的距离=之前的距离+当前移动的距离
 				cssTransform(oList,'translateX',startX + disX);
 			}
@@ -135,7 +143,7 @@ var indexInit=(function(){
 				}
 				oList.style.WebkitTransition=oList.style.transition='none';
 				//移动设备启动3d硬件加速
-				cssTransform(oList,'translateZ',0.01);
+				cssTransform(oList,'translateZ',-0.001);
 				cssTransform(oList,'translateX',-iNow*oWrap.offsetWidth);
 				iNow++;
 				setTimeout(function(){
@@ -147,7 +155,7 @@ var indexInit=(function(){
 		function play(){
 			oList.style.WebkitTransition=oList.style.transition='.5s';
 			//移动设备启动3d硬件加速
-			cssTransform(oList,'translateZ',0.01);
+			cssTransform(oList,'translateZ',-0.001);
 			cssTransform(oList,'translateX',-iNow*oWrap.offsetWidth);
 			for(var i=0,len = oNav.length;i<len;i++){
 				oNav[i].className = '';
@@ -309,7 +317,7 @@ var indexInit=(function(){
 					//元素总共移动的距离=之前的距离+当前移动的距离
 					cssTransform(list,'translateX',startX + disX);
 				}
-				if(Math.abs(disX) > width/2){
+				if(Math.abs(disX) > width/3.5){
 					moveEnd(disX);
 				}
 			});

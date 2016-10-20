@@ -11,7 +11,7 @@ body{
 	font:12px/1.5 Tahoma,'\5FAE\8F6F\96C5\9ED1','Microsoft Yahei',"hiragino sans gb", Helvetica, Arial, "\5b8b\4f53", 'sans-serif';
 	background-color: #eee;
 }
-input,button{border: none;outline: none;
+input,button{border: none;outline: none;padding:0;margin:0;
 	font:12px/1.5 Tahoma,'\5FAE\8F6F\96C5\9ED1','Microsoft Yahei',"hiragino sans gb", Helvetica, Arial, "\5b8b\4f53", 'sans-serif';}
 ul,ol{list-style: none;}
 a{text-decoration: none;color: #333333;}
@@ -161,6 +161,7 @@ a{text-decoration: none;color: #333333;}
 	background-color: #ffffff;
 }
 .search_wrap .submitBtn{
+	display: block;
 	width: 120/@rem;
 	height: 60/@rem;
 	color: #ffffff;
@@ -220,7 +221,7 @@ a{text-decoration: none;color: #333333;}
 
 /*轮播图样式*/
 #scrollWrap{
-    width: 100%;
+	width: 100%;
     overflow: hidden;
     position: relative;
     /*3d模式下隐藏背面，幻灯片切换出现闪烁问题*/
@@ -228,12 +229,16 @@ a{text-decoration: none;color: #333333;}
     transform-style:preserve-3d;
 }
 #picList{
+	width: 1000%;
     overflow: hidden;
     /*3d模式下隐藏背面，幻灯片切换出现闪烁问题*/
     -webkit-backface-visibility:hidden;
     backface-visibility:hidden;
+    position: relative;
 }
 #picList li{
+	width: 10%;
+	height: 368/@rem;
     float: left;
     overflow: hidden;
 }
@@ -244,10 +249,11 @@ a{text-decoration: none;color: #333333;}
 }
 #picList li img{
     width: 100%;
+    height: 368/@rem;
     display: block;
     float: left;
 }
-#btn{height:20/@rem;padding:0;
+#btn{height:20/@rem;padding:0;z-index: 9999;
 overflow:hidden;position:absolute;right:20/@rem;bottom: 6/@rem;text-align: right;}
 #btn span{display:inline-block;width: 16/@rem;
 height: 16/@rem;border-radius:16/@rem;background:rgba(0,0,0,0.5);margin:0 5/@rem;}
