@@ -13,11 +13,12 @@ blog:www.congitlive.cn
 var indexInit=(function(){
 	//初始化
 	function init(){
-		// offDefaultEvent();
+		offDefaultEvent();
 		navTab();
 		scrollPic();
 		navScroll();
 		tab();
+		pageScroll();
 	}
 	function offDefaultEvent(){
 		document.addEventListener('touchstart',function(e){
@@ -186,7 +187,7 @@ var indexInit=(function(){
 		var lastX = 0;
 		var lastTime = 0;
 		var lastDis = 0;
-		var lastTimeDis = 0;
+		var lastTimeDis = 1;
 		// console.log(oNavscroll.clientWidth,oNavlist.offsetWidth,minX);
 		oNavscroll.addEventListener('touchstart',function(e){
 			oNavlist.style.WebkitTransition=oNavlist.style.transition='none';
@@ -194,10 +195,10 @@ var indexInit=(function(){
 			oStartX = cssTransform(oNavlist,'translateX');
 			// console.log(oStartpoint,oStartX);
 			step = 1;
-			lastX = oStartX;
+			lastX = oStartpoint;
 			lastTime = new Date().getTime();
 			lastDis = 0;
-			lastTimeDis = 0;
+			lastTimeDis = 1;
 		});
 		oNavscroll.addEventListener('touchmove',function(e){
 			var oNowpoint = e.changedTouches[0].pageX;
@@ -222,9 +223,9 @@ var indexInit=(function(){
 				//设置滑动距离
 				moveLeft = minX - over;
 			}
-			lastDis = moveLeft - lastX;
+			lastDis = oNowpoint - lastX;
 			lastTimeDis = nowTime - lastTime;
-			lastX = moveLeft;
+			lastX = oNowpoint;
 			lastTime = nowTime;
 			//移动设备启动3d硬件加速
 			cssTransform(oNavlist,'translateZ',0.01);
@@ -389,6 +390,28 @@ var indexInit=(function(){
 			}
 		}
 	}
+	//模拟页面滑动
+	function pageScroll(){
+		var oWrap = document.querySelector('#pageWrap');
+		var oScroll = document.querySelector('#scrollCon');	
+		var oScrollBar = document.querySelector('#scrollBar');
+		var scale = oWrap.clientHeight/oScroll.offsetHeight;
+		oScrollBar.style.height = oWrap.clientHeight*scale +'px';
+		var callBack = {};
+		callBack.startFn = function(){
+			oScrollBar.style.opacity = 1;
+		}
+		callBack.onFn = function(){
+			var iTop = -cssTransform(oScroll,'translateY')*scale;
+			console.log(iTop);
+			cssTransform(oScrollBar,'translateY',iTop);
+		}
+		callBack.overFn = function(){
+			oScrollBar.style.opacity = 0;
+		}
+		mScrollFn(oWrap,callBack);
+	}
+
 	return{
 		init:init
 	}

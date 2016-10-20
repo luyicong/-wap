@@ -1,46 +1,52 @@
-//使用规则：如果要获取transform的属性值，就必须先通过此函数设置transform的属性值
-function cssTransform(el,attr,val) {
-	if(!el.transform){
-		el.transform = {};
-	}
-	if(arguments.length>2) {
-		el.transform[attr] = val;
-		var sVal = "";
-		for(var s in el.transform){
-			switch(s) {
-				case "rotate":
-				case "skewX":
-				case "skewY":
-					sVal +=s+"("+el.transform[s]+"deg) ";
-					break;
-				case "translateX":
-				case "translateY":
-				case "translateZ":
-					sVal +=s+"("+el.transform[s]+"px) ";
-					break;
-				case "scaleX":
-				case "scaleY":
-				case "scale":
-					sVal +=s+"("+el.transform[s]+") ";
-					break;	
-			}
-			el.style.WebkitTransform = el.style.transform = sVal;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义滑动区域</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<style type="text/css" media="screen">
+		*{padding:0;margin:0;}
+		html,body{height: 100%;overflow: hidden;}
+		#wrap{height: 100%;overflow: hidden;position: relative;}
+		#scroll{width: 100%;overflow: hidden;}
+		#scrollBar{position: absolute;right: 0;top: 0;height: 100%;width: 4px;background:rgba(0,0,0,0.5);opacity:0;
+			transition:0.5s opacity;-webkit-transition:0.5s opacity;z-index: 888;border-radius: 4px;}
+	</style>
+	<script src="js/transform.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oWrap = document.querySelector('#wrap');
+		var oScroll = document.querySelector('#scroll');
+		var html = ' ';
+		for(var i=0;i<300;i++){
+			html +='<div>页面内容'+i+'</div>';
 		}
-	} else {
-		val  = el.transform[attr];
-		if(typeof val == "undefined" ) {
-			if(attr == "scale" || attr == "scaleX" || attr == "scaleY"  ) {
-				val = 1;
-			} else {
-				val = 0;
-			}
+		oScroll.innerHTML = html;		
+		var oScrollBar = document.querySelector('#scrollBar');
+		var scale = oWrap.clientHeight/oScroll.offsetHeight;
+		console.log(oScroll.offsetHeight);
+		oScrollBar.style.height = oWrap.clientHeight*scale +'px';
+		
+		var callBack = {};
+
+		callBack.startFn = function(){
+			oScrollBar.style.opacity = 1;
 		}
-		return val;
+
+		callBack.onFn = function(){
+			var iTop = -cssTransform(oScroll,'translateY')*scale;
+			console.log(iTop);
+			cssTransform(oScrollBar,'translateY',iTop);
+		}
+
+		callBack.overFn = function(){
+			oScrollBar.style.opacity = 0;
+		}
+
+		mScrollFn(oWrap,callBack);
 	}
-}
-//页面滑动以及自定义滚动条
-function mScrollFn(wrap,callBack){
-		var oScroll = wrap.querySelector('#scrollCon');
+	function mScrollFn(wrap,callBack){
+		var oScroll = wrap.querySelector('#scroll');
 		var oStartpoint = 0;
 		var oStartY = 0;
 		var minY = wrap.clientHeight - oScroll.offsetHeight;
@@ -168,4 +174,16 @@ function mScrollFn(wrap,callBack){
 			},20);
 		}
 	}
-
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="scroll">
+			
+		</div>
+		<div id="scrollBar">
+			
+		</div>
+	</div>
+</body>
+</html>
