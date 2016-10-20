@@ -76,13 +76,13 @@ var indexInit=(function(){
 		cssTransform(oList,'translateZ',-0.001);
 		cssTransform(oList,'translateX',0);
 		
-		autoPlay();
+		// autoPlay();
 		
 		oWrap.addEventListener('touchstart',function(e){
 			clearInterval(timer);
 			oList.style.WebkitTransition=oList.style.transition='none';
 			var translateX = cssTransform(oList,'translateX');
-			iNow = Math.round(-translateX/oWrap.offsetWidth);
+			// iNow = Math.round(-translateX/oWrap.offsetWidth);
 			if(iNow==0){
 				iNow=oNav.length;
 			}
@@ -98,6 +98,7 @@ var indexInit=(function(){
 			*/
 			//存值
 			startPoint = {pageX:e.changedTouches[0].pageX,pageY:e.changedTouches[0].pageY};
+			// console.log(startPoint.pageX);
 			startX = cssTransform(oList,'translateX');
 			isMove = true;
 			isFirst = true;
@@ -128,11 +129,22 @@ var indexInit=(function(){
 				cssTransform(oList,'translateX',startX + disX);
 			}
 		});
-		oWrap.addEventListener('touchend',function(){
+		oWrap.addEventListener('touchend',function(e){
 			var translateX = cssTransform(oList,'translateX');
-			iNow = Math.round(-translateX/oWrap.offsetWidth);
+			var  endPoint = e.changedTouches[0];
+			var endLeft = endPoint.pageX - startPoint.pageX;
+			// console.log(endLeft);
+			if(endLeft>0&&Math.abs(endLeft)>oWrap.offsetWidth/4){
+				iNow--;
+				console.log(iNow);
+			}
+			if(endLeft<0&&Math.abs(endLeft)>oWrap.offsetWidth/4){
+				iNow++;
+				console.log(iNow);
+			}
+			// iNow = Math.round(-translateX/oWrap.offsetWidth);
 			play();
-			autoPlay();
+			// autoPlay();
 		});
 		//自动播放
 		function autoPlay(){
