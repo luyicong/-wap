@@ -49,6 +49,8 @@ function mScrollFn(wrap,callBack){
 		var lastTime = 0;
 		var lastDis = 0;
 		var lastTimeDis = 1;
+		var isMove = true;
+		var isFirst = true;
 		var Tween = {
 			easeOut:function(t,b,c,d){
 				return -c*( (t=t/d-1)*t*t*t-1 )+b;
@@ -67,21 +69,37 @@ function mScrollFn(wrap,callBack){
 				callBack.startFn();
 			}
 			oScroll.style.WebkitTransition=oScroll.style.transition='none';
-			oStartpoint = e.changedTouches[0].pageY;
+			oStartpoint = {pageY:e.changedTouches[0].pageY,pageX:e.changedTouches[0].pageX};
 			oStartY = cssTransform(oScroll,'translateY');
 			// console.log(oStartpoint,oStartY);
 			step = 1;
-			lastY = oStartpoint;
+			lastY = oStartpoint.pageY;
 			lastTime = new Date().getTime();
 			lastDis = 0;
 			lastTimeDis = 1;
+			isMove = true;
+			isFirst = true;
 		});
 		wrap.addEventListener('touchmove',function(e){
-			var oNowpoint = e.changedTouches[0].pageY;
-			var disY = oNowpoint - oStartpoint;
+			//如果isMove为假即表示上下滑动，return掉
+			if(!isMove){
+				return ;
+			}
+			var oNowpoint = e.changedTouches[0];
+			var disX = oNowpoint.pageX - oStartpoint.pageX;
+			var disY = oNowpoint.pageY - oStartpoint.pageY;
+			if(isFirst){
+				isFirst = false;
+				//是否是上下滑动
+				if(Math.abs(disY) < Math.abs(disX)){
+					isMove = false;
+					return ;
+				}
+			}
 			// console.log(oNowpoint,disY);
 			var moveLeft = oStartY+disY;
 			var nowTime = new Date().getTime();
+			
 			//左边
 			if(moveLeft > 0){
 				//计算拉动超出长度系数大小，超出越大 系数越小
@@ -99,16 +117,17 @@ function mScrollFn(wrap,callBack){
 				//设置滑动距离
 				moveLeft = minY - over;
 			}
-			lastDis = oNowpoint - lastY;
+			lastDis = oNowpoint.pageY - lastY;
 			lastTimeDis = nowTime - lastTime;
-			lastY = oNowpoint;
+			lastY = oNowpoint.pageY;
 			lastTime = nowTime;
-			//移动设备启动3d硬件加速
-			cssTransform(oScroll,'translateZ',-0.001);
-			cssTransform(oScroll,'translateY',moveLeft);
-			if(callBack&&callBack.onFn){
-				callBack.onFn();
-			}
+				//移动设备启动3d硬件加速
+				cssTransform(oScroll,'translateZ',-0.001);
+				cssTransform(oScroll,'translateY',moveLeft);
+				if(callBack&&callBack.onFn){
+					callBack.onFn();
+				}
+			
 		});
 		/*
 		缓冲快慢：与移动的最后一次移动速度有关

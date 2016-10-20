@@ -21,9 +21,19 @@ var indexInit=(function(){
 		pageScroll();
 	}
 	function offDefaultEvent(){
+		var oTop = document.querySelector('#top');
+		var oSearch = document.querySelector('#search');
+		oTop.addEventListener('touchend',function(e){
+			e.stopPropagation();
+		});
+		oSearch.addEventListener('touchend',function(e){
+			e.stopPropagation();
+		});
 		document.addEventListener('touchstart',function(e){
+			e.stopPropagation();
 			e.preventDefault();
 		});
+
 	}
 	//顶部频道点击
 	function navTab(){
@@ -61,7 +71,6 @@ var indexInit=(function(){
 		var css = document.createElement('style');
 		var timer = null;
 		var iNow = 0;
-		console.log(aLi[0].clientHeight);
 		// var style = '#scrollWrap{height:'+aLi[0].offsetHeight+'px;}'
 		// style+='#picList{width:'+aLi.length+'00%;height:'+aLi[0].offsetHeight+'px;}';
 		// style+='#picList li{width:'+1/aLi.length*100+'%;}';
@@ -137,11 +146,9 @@ var indexInit=(function(){
 			// console.log(endLeft);
 			if(endLeft>0&&Math.abs(endLeft)>oWrap.offsetWidth/4){
 				iNow--;
-				console.log(iNow);
 			}
 			if(endLeft<0&&Math.abs(endLeft)>oWrap.offsetWidth/4){
 				iNow++;
-				console.log(iNow);
 			}
 			// iNow = Math.round(-translateX/oWrap.offsetWidth);
 			play();
@@ -403,7 +410,6 @@ var indexInit=(function(){
 		}
 		callBack.onFn = function(){
 			var iTop = -cssTransform(oScroll,'translateY')*scale;
-			console.log(iTop);
 			cssTransform(oScrollBar,'translateY',iTop);
 		}
 		callBack.overFn = function(){
