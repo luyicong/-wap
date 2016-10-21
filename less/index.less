@@ -24,18 +24,25 @@ a{text-decoration: none;color: #333333;}
 .wrapper{
 	width: 100%;
 	height: 100%;
-	overflow: auto;
-	position: relative;
-	z-index:1;
+	overflow: hidden;
+}
+#header{
+	width: 100%;
+	overflow: hidden;
+	float: left;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 10;
 }
 .top_wrap{
 	width: 100%;
 	height: 80/@rem;
 	background: rgba(0, 0, 0, 0.93);
-	position: absolute;
-	left: 0;
-	top:0;
-	z-index: 3;
+	// position: absolute;
+	// left: 0;
+	// top:0;
+	// z-index: 3;
 }
 .logo{
 	display: block;
@@ -130,9 +137,9 @@ a{text-decoration: none;color: #333333;}
 .search_wrap{
 	width: 100%;
 	height: 80/@rem;
-	position: absolute;
-	left: 0;
-	top: 80/@rem;
+	// position: absolute;
+	// left: 0;
+	// top: 80/@rem;
 	background-color: rgba(0, 0, 0, 0.93);
 	z-index: 2;
 	.setBorderBox;
@@ -177,8 +184,6 @@ a{text-decoration: none;color: #333333;}
 .main{
 	width: 100%;
 	padding-top: 170/@rem;
-	position: relative;
-	z-index: 0;
 }
 .navCon{
 	width: 100%;

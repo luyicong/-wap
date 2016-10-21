@@ -409,7 +409,7 @@ var indexInit=(function(){
 			oScrollBar.style.opacity = 1;
 		}
 		callBack.onFn = function(){
-			var iTop = -cssTransform(oScroll,'translateY')*scale;
+			var iTop = -Math.ceil(cssTransform(oScroll,'translateY')*scale);
 			cssTransform(oScrollBar,'translateY',iTop);
 		}
 		callBack.overFn = function(){

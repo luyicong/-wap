@@ -51,16 +51,17 @@ function mScrollFn(wrap,callBack){
 		var lastTimeDis = 1;
 		var isMove = true;
 		var isFirst = true;
+		console.log(wrap.clientHeight);
 		var Tween = {
-			easeOut:function(t,b,c,d){
-				return -c*( (t=t/d-1)*t*t*t-1 )+b;
+			easeOut: function(t, b, c, d){
+				return -c * ((t=t/d-1)*t*t*t - 1) + b;
 			},
-			backOut:function(t,b,c,d,s){
-				if(typeof s == 'undefined'){
-					s = 2.70158;
+			backOut: function(t, b, c, d, s){
+				if (typeof s == 'undefined') {
+					s = 1.70158;  
 				}
-				return c*((t=t/d-1)*t*((s+1)*t + s)+1)+b;
-			}
+				return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+			} 
 		}
 		// console.log(wrap.clientHeight,oScroll.offsetHeight,minY);
 		wrap.addEventListener('touchstart',function(e){
@@ -97,25 +98,25 @@ function mScrollFn(wrap,callBack){
 				}
 			}
 			// console.log(oNowpoint,disY);
-			var moveLeft = oStartY+disY;
+			var moveTop = oStartY+disY;
 			var nowTime = new Date().getTime();
 			
 			//左边
-			if(moveLeft > 0){
+			if(moveTop > 0){
 				//计算拉动超出长度系数大小，超出越大 系数越小
-				step = 1-moveLeft / wrap.clientHeight+.05;
+				step = 1-moveTop / wrap.clientHeight;
 				//设置滑动距离
-				moveLeft = parseInt(moveLeft*step);
+				moveTop = parseInt(moveTop*step);
 			}
 			//右边
-			if(moveLeft < minY){
+			if(moveTop < minY){
 				//计算超出值
-				var over = minY - moveLeft;
+				var over = minY - moveTop;
 				//根据超出值，计算拉动系数
-				step = 1-over / wrap.clientHeight+.05
+				step = 1-over / wrap.clientHeight
 				over = parseInt(over*step);
 				//设置滑动距离
-				moveLeft = minY - over;
+				moveTop = minY - over;
 			}
 			lastDis = oNowpoint.pageY - lastY;
 			lastTimeDis = nowTime - lastTime;
@@ -123,7 +124,7 @@ function mScrollFn(wrap,callBack){
 			lastTime = nowTime;
 				//移动设备启动3d硬件加速
 				cssTransform(oScroll,'translateZ',-0.001);
-				cssTransform(oScroll,'translateY',moveLeft);
+				cssTransform(oScroll,'translateY',moveTop);
 				if(callBack&&callBack.onFn){
 					callBack.onFn();
 				}
@@ -138,14 +139,15 @@ function mScrollFn(wrap,callBack){
 		 */
 		wrap.addEventListener('touchend',function(){
 			//距离差值/时间差值=速度 速度*速度系数=缓冲速度
-			var iSpeed = (lastDis/lastTimeDis)*280;
+			var iSpeed = (lastDis/lastTimeDis)*200;
+			iSpeed = isNaN(iSpeed)?0:iSpeed;
 			//获取当前距离
-			var moveLeft = cssTransform(oScroll,'translateY');
+			var moveTop = cssTransform(oScroll,'translateY');
 			//目标点距离 = 当前距离+缓冲速度
-			var target = moveLeft + iSpeed;
+			var target = moveTop + iSpeed;
 			var type='easeOut';
 			var iTime = Math.abs(iSpeed*.8);
-			iTime=iTime<500?500:iTime;
+			iTime=iTime<300?300:iTime;
 			//左边
 			if(target > 0){
 				target = 0;
@@ -154,9 +156,9 @@ function mScrollFn(wrap,callBack){
 			}
 			if(target < minY){
 				target = minY;
-				type = 'easeOut';
+				type = 'backOut';
 			}
-			oScroll.style.WebkitTransition=oScroll.style.transition=iTime+'ms '+type;
+			//oScroll.style.WebkitTransition=oScroll.style.transition=iTime+'ms '+type;
 			//移动设备启动3d硬件加速
 			// cssTransform(oScroll,'translateZ',0.01);
 			// cssTransform(oScroll,'translateY',target);
@@ -167,7 +169,7 @@ function mScrollFn(wrap,callBack){
 			var t  = 0;
 			var b = cssTransform(oScroll,'translateY');
 			var c = target - b;
-			var d = Math.ceil(iTime/20);
+			var d = Math.ceil(iTime/13);
 			clearInterval(oScroll.timer);
 			oScroll.timer = setInterval(function(){
 				t++;
@@ -184,7 +186,7 @@ function mScrollFn(wrap,callBack){
 						callBack.onFn();
 					}
 				}
-			},20);
+			},13);
 		}
 	}
 
