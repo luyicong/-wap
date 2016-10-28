@@ -30,7 +30,6 @@ var indexInit=(function(){
 			e.stopPropagation();
 		});
 		document.addEventListener('touchstart',function(e){
-			e.stopPropagation();
 			e.preventDefault();
 		});
 
